@@ -1,0 +1,38 @@
+buildscript{
+
+    ext { /*ext는 전역변수를 설정하겠다는 의미*/
+        /*전역변수*/
+        springBootVersion = '2.1.7.RELEASE'
+    }
+
+    repositories { /*각종 의존성(라이브러리)들을 어떤 원격저장소에 받을지를 정함*/
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies { /*개발에 필요한 의존성들을 선언하는 곳*/
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+
+}
+
+/*스프링 부트를 사용하기 위한 필수 플러그인 (4개)*/
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management' /*스프링 부트의 의존성들을 관리해 주는 플러그인*/
+
+group 'com.springboot2.webservice'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories { /*각종 의존성(라이브러리)들을 어떤 원격저장소에 받을지를 정함*/
+    mavenCentral()
+}
+
+dependencies { /*개발에 필요한 의존성들을 선언하는 곳*/
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.projectlombok:lombok')
+    annotationProcessor('org.projectlombok:lombok')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
